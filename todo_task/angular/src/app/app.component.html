@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="jumbotron" style="padding:45px 0px; color:purple">
+        <h1 class="text-center">TODO APP</h1>
+      </div>
+      <form class="input-group" #myForm="ngForm">
+        
+        <input type="text" class="form-control" placeholder="Enter Task" name="task" [(ngModel)]="taskObj.task">
+        <input type="date" class="form-control" name="date" [(ngModel)]="taskObj.date" >      
+        <div class="input-group-addon hover-cursor">
+          <a href="" class="fa fa-plus-circle fa-2x" (click)="addtask(myForm.value)" *ngIf="!isEdit" style="text-decoration: none;"></a>
+          <a class="fa fa-check fa-2x" (click)="updatetask()" *ngIf="isEdit" style="text-decoration: none;"></a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div style="margin:5px 0px">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let i of alltasks">
+            <span class="checkbox" >
+              <input type="checkbox" >
+            </span>
+                 <span> {{i.task}}  | {{i.date}}</span>
+            <span  class="col-md-1 pull-right ">
+              <a href="" class="fa fa-trash-o fa-lg" style="color:red;text-decoration:none;" (click)="deletetask(i)"></a>
+            </span>
+            <span class="hover-cursor text-success pull-right" >
+              <a class="fa fa-edit fa-lg" style="font-size:24px;text-decoration:none;" (click)="EditTask(i)"></a>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
